@@ -140,6 +140,15 @@ public final class IntegerOperators
     {
         return left == right;
     }
+    
+    @ScalarOperator(EQUAL)
+    @SqlType(StandardTypes.BOOLEAN)
+    @SqlNullable
+    public static Boolean equal(@SqlType(StandardTypes.INTEGER) long left, @SqlType(StandardTypes.BOOLEAN) long right)
+    {
+        int r = right ? 1 : 0;
+        return left == r;
+    }
 
     @ScalarOperator(NOT_EQUAL)
     @SqlType(StandardTypes.BOOLEAN)
@@ -147,6 +156,15 @@ public final class IntegerOperators
     public static Boolean notEqual(@SqlType(StandardTypes.INTEGER) long left, @SqlType(StandardTypes.INTEGER) long right)
     {
         return left != right;
+    }
+    
+    @ScalarOperator(NOT_EQUAL)
+    @SqlType(StandardTypes.BOOLEAN)
+    @SqlNullable
+    public static Boolean notEqual(@SqlType(StandardTypes.INTEGER) long left, @SqlType(StandardTypes.BOOLEAN) long right)
+    {
+        int r = right ? 1 : 0;
+        return left != r;
     }
 
     @ScalarOperator(LESS_THAN)
