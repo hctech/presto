@@ -181,6 +181,10 @@ final class FixJsonDataUtils
             case IPADDRESS:
             case IPPREFIX:
             case DECIMAL:
+                if (value instanceof String) {
+                    return new java.math.BigDecimal((String) value);
+                }
+                return new java.math.BigDecimal(((Number) value).toString());
             case CHAR:
             case GEOMETRY:
                 return String.class.cast(value);
